@@ -3,10 +3,10 @@ from typing import Protocol
 from typing import Optional
 from typing import List
 
-from src.users.auth.credentials import Credentials
 from src.users.accounts import Account
 from src.users.contacts import Contact
-
+from src.users.messages import Message
+from src.users.auth.credentials import Credentials
 
 class Accounts(ABC):
 
@@ -26,7 +26,6 @@ class Accounts(ABC):
     async def delete(self, account : Account):
         ...
 
-
 class Contacts(ABC):
 
     @abstractmethod
@@ -42,10 +41,25 @@ class Contacts(ABC):
         ...
 
 
+class Messages(ABC):
+    
+        @abstractmethod
+        async def add(self, sender : Account, receiver : Account, message : Message):
+            ...
+
+        @abstractmethod
+        async def get(self, sender : Account, receiver : Account) -> List[Message]:
+            ...
+
+        @abstractmethod
+        async def remove(self, message : Message):
+            ...
+
+
 class UnitOfWork(Protocol):
     accounts : Accounts
     contacts : Contacts
-
+    messages : Messages
 
     async def __aenter__(self):
         ...

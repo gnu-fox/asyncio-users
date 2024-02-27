@@ -12,7 +12,6 @@ from pydantic import field_serializer, field_validator
 from src.users.auth.security import Security
 
 class Credentials(BaseModel):
-    id : UUID = Field(default=None, alias="id", description="The UUID of the Account")
     username : str = Field(default=None, alias="username", description="The username of the Account")
     email : EmailStr = Field(default=None, alias="email", description="The email of the Account")
     password : SecretStr = Field(default=None, alias="password", description="The password of the Account")
@@ -27,6 +26,3 @@ class Credentials(BaseModel):
     
     def verify_password(self, password : Union[str, SecretStr]) -> bool:
         return Security.verify(password, self.password)
-    
-    def generate_id(self):
-        self.id = uuid4()
