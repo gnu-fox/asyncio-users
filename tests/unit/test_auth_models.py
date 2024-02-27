@@ -4,10 +4,10 @@ import asyncio
 import datetime
 import logging
 
-from src.domain.auth.models.credentials import Credential, SecretStr
-from src.domain.auth.models.security import Security
-from src.domain.auth.models.tokens import Token, Tokenizer, Claim
-from src.domain.auth import exceptions
+from src.users.auth.credentials import Credentials, SecretStr
+from src.users.auth.security import Security
+from src.users.auth.tokens import Token, Tokenizer, Claim
+from src.users import exceptions
 
 LOGGER = logging.getLogger(__name__)
 
@@ -52,8 +52,8 @@ def test_tokenizer():
     with pytest.raises(exceptions.TokenExpired):
         Tokenizer.decode(token)
 
-def test_credential():
-    LOGGER.info("Testing Credential")
+def test_credentials():
+    LOGGER.info("Testing Credentials")
 
-    credential = Credential(id=uuid.uuid4(), username="admin", email="admin@gmail.com", password="admin")
-    assert credential.id
+    credentials = Credentials(id=uuid.uuid4(), username="admin", email="admin@gmail.com", password="admin")
+    assert credentials.id

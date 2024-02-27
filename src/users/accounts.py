@@ -1,12 +1,15 @@
+from uuid import UUID
 from typing import TypeVar
 
+from src.users.auth.credentials import Credentials
+
 class Account:
-    ID = TypeVar('ID')
-    def __init__(self, id : ID):
+    def __init__(self, id : UUID, credentials : Credentials = None):
         self.__id = id
+        self.__credentials = credentials
     
     @property
-    def id(self) -> ID:
+    def id(self) -> UUID:
         return self.__id
     
     def __eq__(self, other):

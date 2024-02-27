@@ -1,7 +1,7 @@
 import pytest
 import uuid
 
-from src.domain.models import Account
+from src.users.accounts import Account
 
 def test_accounts():
     identity = uuid.uuid4()

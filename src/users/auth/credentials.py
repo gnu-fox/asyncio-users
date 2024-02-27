@@ -9,9 +9,9 @@ from pydantic import SecretStr
 from pydantic import EmailStr
 from pydantic import field_serializer, field_validator
 
-from src.domain.auth.models.security import Security
+from src.users.auth.security import Security
 
-class Credential(BaseModel):
+class Credentials(BaseModel):
     id : UUID = Field(default=None, alias="id", description="The UUID of the Account")
     username : str = Field(default=None, alias="username", description="The username of the Account")
     email : EmailStr = Field(default=None, alias="email", description="The email of the Account")
