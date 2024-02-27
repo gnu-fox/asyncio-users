@@ -1,7 +1,7 @@
 from uuid import UUID
 from typing import TypeVar
 
-from src.users.auth.credentials import Credentials
+from src.users.auth.models.credentials import Credentials
 
 class Account:
     def __init__(self, id : UUID, credentials : Credentials = None):

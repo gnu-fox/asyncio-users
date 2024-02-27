@@ -9,7 +9,7 @@ from pydantic import SecretStr
 from pydantic import EmailStr
 from pydantic import field_serializer, field_validator
 
-from src.users.auth.security import Security
+from src.users.auth.models.security import Security
 
 class Credentials(BaseModel):
     username : str = Field(default=None, alias="username", description="The username of the Account")

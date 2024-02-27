@@ -4,10 +4,10 @@ import asyncio
 import datetime
 import logging
 
-from src.users.auth.credentials import Credentials, SecretStr
-from src.users.auth.security import Security
-from src.users.auth.tokens import Token, Tokenizer, Claim
-from src.users import exceptions
+from src.users.auth.models.credentials import Credentials, SecretStr
+from src.users.auth.models.security import Security
+from src.users.auth.models.tokens import Token, Tokenizer, Claim
+from src.users.auth import exceptions
 
 LOGGER = logging.getLogger(__name__)
 
@@ -55,5 +55,6 @@ def test_tokenizer():
 def test_credentials():
     LOGGER.info("Testing Credentials")
 
-    credentials = Credentials(id=uuid.uuid4(), username="admin", email="admin@gmail.com", password="admin")
-    assert credentials.id
+    credentials = Credentials(username="admin", email="admin@gmail.com", password="admin")
+    credentials = Credentials(username="admin", email="admin@gmail.com")
+    credentials = Credentials(username="admin")

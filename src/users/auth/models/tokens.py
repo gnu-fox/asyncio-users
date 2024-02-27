@@ -16,7 +16,7 @@ from jose import JWTError
 from jose import ExpiredSignatureError
 from pydantic import SecretStr
 
-from src.users import exceptions
+from src.users.auth import exceptions
 
 class Token(BaseModel):
     model_config = ConfigDict(frozen=True)
